@@ -1,0 +1,37 @@
+{
+  "name": "grunt-stats",
+  "description": "Statics of Static files",
+  "version": "0.1.0",
+  "homepage": "https://github.com/t32k/grunt-stats",
+  "author": {
+    "name": "Koji Ishimoto",
+    "email": "ijok.ijok@gmail.com",
+    "url": "http://en.t32k.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/t32k/grunt-stats.git"
+  },
+  "bugs": {
+    "url": "https://github.com/t32k/grunt-stats/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/t32k/grunt-stats/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": [
+    "gruntplugin",
+    "grunt.js"
+  ]
+}
