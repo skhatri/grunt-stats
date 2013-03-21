@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     // Task configuration.
     stats: {
       dist: {
-        src: 'hoge.css'
+        src: ['static/*']
       }
     }
   });

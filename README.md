@@ -13,6 +13,15 @@
 + 2013/xx/xx - v0.1.0 - Initial release.
 
 
+# Google Analytics
+
+## Event Tracking
+
+`_trackEvent(category, action, opt_label, opt_value, opt_noninteraction)`
+
+`_gaq.push(['_trackEvent', 'Stats', 'FILENAME', 'DATE', SIZE, true]);`
+
+
 # LICENSE MIT
 
 Copyright (c) 2013 Koji Ishimoto
