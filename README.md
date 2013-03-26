@@ -1,12 +1,6 @@
-# grunt-stats
+# grunt-stats [![Build Status](https://secure.travis-ci.org/t32k/grunt-stats.png?branch=master)](http://travis-ci.org/t32k/grunt-stats)
 
-
-## Dependencies
-
-
-## Installation & Options
-
-# An Example Setup
+> Statics of Static files.
 
 # Release History
 
