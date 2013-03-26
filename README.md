@@ -1,6 +1,6 @@
 # grunt-stats [![Build Status](https://secure.travis-ci.org/t32k/grunt-stats.png?branch=master)](http://travis-ci.org/t32k/grunt-stats)
 
-> Statics of Static files.
+> Statics of static files.
 
 # Release History
 

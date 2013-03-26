@@ -10,39 +10,25 @@
 'use strict';
 
 module.exports = function (grunt) {
-	var fs = require('fs');//
-	var bytes = require('bytes');
+	var fs = require('fs');
 	var moment = require('moment');
 
-	//var stat = fs.statSync('hoge.js');
-//
-	//console.log('Size: ' + stat.size);
-	//console.log('Time: ' + stat.mtime);
-//
-	//var hoge = moment(stat.mtime).format('dddd');
-	//console.log(hoge);
-	//console.log(bytes(stat.size));
+	grunt.registerMultiTask('stats', 'Statics of static files', function() {
 
-	grunt.registerMultiTask('stats', 'Statics of Static files', function() {
+		var files = this.filesSrc;
 
-		this.files.forEach(function(f) {
-		  var max = f.src.filter(function(filepath) {
-		    // Warn on and remove invalid source files (if nonull was set).
-		    if (!grunt.file.exists(filepath)) {
-		      grunt.log.warn('Source file "' + filepath + '" not found.');
-		      return false;
-		    } else {
-		      return true;
-		    }
-		  })
-		  .map(grunt.file.read)
-		  .join(grunt.util.normalizelf(grunt.util.linefeed));
+		files.forEach(function(filepath) {
 
+			var stat = fs.statSync(filepath);
+			var time = moment(stat.mtime).format('"YYYY-MM-DD-HH:mm');
+			
+			grunt.log.writeln(stat.size);
+			grunt.log.writeln(time);
 
 		});
 
-		grunt.log.write('hogegegegeeg');
+		grunt.log.ok('Files : ' + files.length);
+
 	});
 
-	var measureSize;
 };
