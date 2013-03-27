@@ -20,7 +20,14 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     stats: {
-      dist: ['test/fixtures/*','test/stats_test.js']
+      main:  {
+        options: {
+          total: true,
+          ga_id: 'UA-2317436-26' // required
+        },
+        src: ['test/fixtures/*','test/stats_test.js'],
+      }
+
     },
 
     // Unit tests.
