@@ -1,4 +1,3 @@
-// 'UA-2317436-26',
 var page	= require('webpage').create(),
 	system 	= require('system');
 
