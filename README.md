@@ -2,18 +2,58 @@
 
 > Statics of static files.
 
-# Release History
+## Getting Started
+This plugin requires Grunt `~0.4.1`
 
-+ 2013/xx/xx - v0.1.0 - Initial release.
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+```shell
+npm install grunt-stats --save-dev
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-stats');
+```
+
+*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-contrib-cssmin/tree/grunt-0.3-stable).*
+
+
+## Stats task
+_Run this task with the `grunt stats` command._
+
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
+
+Files are reported with [Google Analytics](http://www.google.com/analytics/).
+
+### Options
+
+#### ga_id (required)
+
+Type: `String`
+
+#### item_name (plan)
+
+Type: `String` Default: file path
+
+#### total (plan)
+
+Type: `Boolean` Default: 'false'
 
 
 # Google Analytics
 
-## Event Tracking
+## [Event Tracking - Web Tracking (ga.js)](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide)
+
+`_gaq.push(['_trackEvent', 'grunt-stats', 'FILE_NAME', 'DATE', SIZE, true]);`
 
 `_trackEvent(category, action, opt_label, opt_value, opt_noninteraction)`
 
-`_gaq.push(['_trackEvent', 'Stats', 'FILENAME', 'DATE', SIZE, true]);`
+
+# Release History
+
++ 2013/xx/xx - v0.1.0 - Initial release.
 
 
 # LICENSE MIT

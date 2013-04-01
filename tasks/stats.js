@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 		binPath = phantom.path;
 
 	// Tasks
-	// ==========================================================================
+	// -----------------------------------------------------------------------
 	grunt.registerMultiTask('stats', 'Statics of static files', function () {
 
 		var done = this.async(),
@@ -36,19 +36,20 @@ module.exports = function (grunt) {
 		files.forEach(function (filepath) {
 
 			var stat = fs.statSync(filepath);
-			var time = moment(stat.mtime).format('"YYYY-MM-DD-HH:mm');
-
-			// grunt.log.writeln(filepath);
-			// grunt.log.writeln(stat.size);
-			// grunt.log.writeln(time);
+			var time = moment(stat.mtime).format('YYYY-MM-DD-HH:mm');
 
 			postGA(opts.ga_id, filepath, time, stat.size);
 		});
 
+		setTimeout(function () {
+			done();
+		}, 5000);
+
 	});
 
+
 	// Helper
-	// ==========================================================================
+	// -----------------------------------------------------------------------
 
 	/* *
 	 * Post data to Google Analytics
@@ -58,14 +59,14 @@ module.exports = function (grunt) {
 	 * @param {Number} size
 	 */
 	var postGA = function (id, name, time, size) {
-
 		var childArgs = [
 			path.join(__dirname, 'phantom/report.js'), id, name, time, size
 		];
 		cp.execFile(binPath, childArgs, function (err, stdout, stderr) {
-			grunt.log.error('err: ' + err);
-			grunt.log.writeln('stdout: ' + stdout);
-			grunt.log.writeln('stderr: ' + stderr);
+			if(!err === null) {
+				grunt.log.error('err: ' + err);
+			}	
+			grunt.log.ok('Data sent: ' + name + ' is ' + size + 'bytes');
 		});
 	};
 };

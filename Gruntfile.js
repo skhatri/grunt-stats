@@ -18,10 +18,10 @@ module.exports = function(grunt) {
     stats: {
       main:  {
         options: {
-          total: true,
+          total: true, // plan: return total value. 
           ga_id: 'UA-2317436-26' // required
         },
-        src: ['test/fixtures/*','test/stats_test.js'],
+        src: ['test/fixtures/*'],
       }
 
     },
