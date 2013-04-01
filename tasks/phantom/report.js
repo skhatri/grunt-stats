@@ -1,16 +1,21 @@
-var system = require('system'),
-	page = require('webpage').create();
+var sys = require('system'),
+	page = require('webpage').create(),
+	id = String(sys.args[1]),
+	name = String(sys.args[2]),
+	time = String(sys.args[3]),
+	size = Number(sys.args[4]);
 
-var utm = 'http://www.google-analytics.com/__utm.gif',
-	etc = '?utmwv=0&utmhn=en.t32k.me&utmt=event&utmcs=UTF-8&utmul=en-us&utmr=-&utmp=-&utmni=1',
-	utmac = system.args[1],
-	utme = '5(iekara*' + system.args[2] + '*' + system.args[3] + ')(' + system.args[4] + ')',
-	utmn = Math.floor(Math.random() * 100000);
-
-var url = utm + etc + '&utmac=' + utmac + '&utme=' + utme + '&utmn=' + utmn;
-
-console.log(url);
-
-page.open(url, function () {
-	phantom.exit();
+page.open('http://dev.t32k.me/', function () {
+	page.includeJs('http://www.google-analytics.com/ga.js', function () {
+		page.evaluate(function (id, name, time, size) {
+			_gaq.push(
+				['_setAccount', id],
+				['_trackEvent', 'grunt-stats', name, time, size, true]
+			);
+		}, id, name, time, size);
+	});
 });
+
+setTimeout(function () {
+	phantom.exit();
+}, 500);
