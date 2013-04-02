@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       main:  {
         options: {
           total: true, // plan: return total value. 
-          ga_id: 'UA-2317436-26' // required
+          gaid: 'UA-2317436-26' // required
         },
         src: ['test/fixtures/*'],
       }

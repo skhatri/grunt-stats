@@ -11,8 +11,9 @@
 module.exports = function (grunt) {
 
 	var fs = require('fs'),
-		path = require('path'),
 		cp = require('child_process'),
+		path = require('path'),
+		async = require('async'),
 		moment = require('moment'),
 		phantom = require('phantomjs'),
 		binPath = phantom.path;
@@ -24,49 +25,31 @@ module.exports = function (grunt) {
 		var done = this.async(),
 			files = this.filesSrc,
 			opts = this.options({
-				ga_id: false,
+				gaid: false,
 				total: false
 			});
 
-		if (!opts.ga_id) {
+		if (!opts.gaid) {
 			grunt.log.error('Google Analytics ID is REQUIRED.');
 			return false;
 		}
 
-		files.forEach(function (filepath) {
-
-			var stat = fs.statSync(filepath);
+		async.each(files, function(filename, next) {
+			var stat = fs.statSync(filename);
 			var time = moment(stat.mtime).format('YYYY-MM-DD-HH:mm');
 
-			postGA(opts.ga_id, filepath, time, stat.size);
-		});
+			var childArgs = [
+				path.join(__dirname, 'phantom/report.js'), opts.gaid, filename, time, stat.size
+			];
 
-		setTimeout(function () {
-			done();
-		}, 5000);
-
+			cp.execFile(binPath, childArgs, function (err, stdout, stderr) {
+				if(!err === null) {
+					grunt.log.error('err: ' + err);
+				} else {
+					grunt.log.ok('Data sent: ' + filename + ' is ' + stat.size + 'bytes');
+				}
+				next();
+			});
+		}, done);
 	});
-
-
-	// Helper
-	// -----------------------------------------------------------------------
-
-	/* *
-	 * Post data to Google Analytics
-	 * @param {String} id
-	 * @param {String} name
-	 * @param {String} time
-	 * @param {Number} size
-	 */
-	var postGA = function (id, name, time, size) {
-		var childArgs = [
-			path.join(__dirname, 'phantom/report.js'), id, name, time, size
-		];
-		cp.execFile(binPath, childArgs, function (err, stdout, stderr) {
-			if(!err === null) {
-				grunt.log.error('err: ' + err);
-			}	
-			grunt.log.ok('Data sent: ' + name + ' is ' + size + 'bytes');
-		});
-	};
 };

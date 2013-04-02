@@ -29,6 +29,7 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "async": "~0.2.6",
     "moment": "~2.0.0",
     "phantomjs": "~1.9.0-0"
   },
