@@ -1,6 +1,6 @@
 # grunt-stats [![Build Status](https://secure.travis-ci.org/t32k/grunt-stats.png?branch=master)](http://travis-ci.org/t32k/grunt-stats)
 
-> Statics of static files.
+> Statics of static files using Google Analytics.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -17,7 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-stats');
 ```
 
-*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-contrib-cssmin/tree/grunt-0.3-stable).*
+*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-cssmin/tree/grunt-0.3-stable).*
 
 
 ## Stats task
@@ -29,7 +29,7 @@ Files are reported with [Google Analytics](http://www.google.com/analytics/).
 
 ### Options
 
-#### ga_id (required)
+#### gaid (required)
 
 Type: `String`
 
@@ -42,9 +42,30 @@ Type: `String` Default: file path
 Type: `Boolean` Default: 'false'
 
 
-# Google Analytics
+### Usage Examples
 
-## [Event Tracking - Web Tracking (ga.js)](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide)
+#### Example config
+
+```javascript
+grunt.initConfig({
+  stats: {
+    dist: {
+      options: {              
+        gaid: 'UA-XXXXX-X' // Required
+      }
+      src:  ['assets/css/*.css']
+    }
+  }
+});
+
+grunt.loadNpmTasks('grunt-stats');
+
+grunt.registerTask('default', ['stats']);
+```
+
+## Google Analytics
+
+### [Event Tracking - Web Tracking (ga.js)](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide)
 
 `_gaq.push(['_trackEvent', 'grunt-stats', 'FILE_NAME', 'DATE', SIZE, true]);`
 
