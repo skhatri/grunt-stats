@@ -1,4 +1,4 @@
-# grunt-stats [![Build Status](https://secure.travis-ci.org/t32k/grunt-stats.png?branch=master)](http://travis-ci.org/t32k/grunt-stats)
+# grunt-stats [![Build Status](https://secure.travis-ci.org/t32k/grunt-stats.png?branch=master)](http://travis-ci.org/t32k/grunt-stats) [![NPM version](https://badge.fury.io/js/grunt-stats.png)](http://badge.fury.io/js/grunt-stats)
 
 > Statics of static files using Google Analytics.
 

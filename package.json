@@ -1,6 +1,6 @@
 {
   "name": "grunt-stats",
-  "description": "Statics of Static files using Google Analytics",
+  "description": "Statics of static files using Google Analytics",
   "version": "0.1.0",
   "homepage": "https://github.com/t32k/grunt-stats",
   "author": {
