@@ -74,7 +74,7 @@ grunt.registerTask('default', ['stats']);
 
 # Release History
 
-+ 2013/xx/xx - v0.1.0 - Initial release.
++ 2013/04/02 - v0.1.0 - β-release.
 
 
 # LICENSE MIT

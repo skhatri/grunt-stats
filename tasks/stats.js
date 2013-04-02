@@ -44,7 +44,7 @@ module.exports = function (grunt) {
 
 			cp.execFile(binPath, childArgs, function (err, stdout, stderr) {
 				if(!err === null) {
-					grunt.log.error('err: ' + err);
+					grunt.log.error('ERROR: ' + err);
 				} else {
 					grunt.log.ok('Data sent: ' + filename + ' is ' + stat.size + 'bytes');
 				}
