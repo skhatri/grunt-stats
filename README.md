@@ -33,10 +33,6 @@ Files are reported with [Google Analytics](http://www.google.com/analytics/).
 
 Type: `String`
 
-#### item_name (plan)
-
-Type: `String` Default: file path
-
 #### total (plan)
 
 Type: `Boolean` Default: 'false'
