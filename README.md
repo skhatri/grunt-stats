@@ -2,6 +2,8 @@
 
 > Statics of static files using Google Analytics.
 
+![Screen Shot](https://raw.github.com/t32k/grunt-stats/master/_preview.png "Preview")
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
